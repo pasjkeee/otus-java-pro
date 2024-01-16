@@ -4,13 +4,14 @@ import java.util.*;
 
 public class CustomerReverseOrder {
 
-    private Deque<Customer> customers = new ArrayDeque<>();
+//    private Deque<Customer> customers = new ArrayDeque<>();
+    private Stack<Customer> customers = new Stack<>();
 
     public void add(Customer customer1) {
-        customers.addLast(customer1);
+        customers.add(customer1);
     }
 
     public Customer take() {
-        return customers.pollLast();
+        return customers.pop();
     }
 }
