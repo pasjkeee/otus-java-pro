@@ -1,3 +1,19 @@
+pluginManagement {
+    repositories {
+        def protectedRepo = { repoUrl ->
+            maven {
+                url repoUrl
+                credentials {
+                    username "$nexusUsername"
+                    password "$nexusPassword"
+                }
+            }
+        }
+        protectedRepo("https://nexus-ci.delta.sbrf.ru/repository/public/")
+        protectedRepo("https://nexus-ci.delta.sbrf.ru/repository/maven-lib-int/")
+    }
+}
+
 rootProject.name = 'gradle'
 include 'hw01-gradle'
-
+include 'hw06-annotations-02'

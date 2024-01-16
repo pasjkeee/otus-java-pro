@@ -9,7 +9,18 @@ allprojects {
 
     repositories {
         mavenLocal()
-        mavenCentral()
+//        mavenCentral()
+        def protectedRepo = { repoUrl ->
+            maven {
+                url repoUrl
+                credentials {
+                    username "$nexusUsername"
+                    password "$nexusPassword"
+                }
+            }
+        }
+        protectedRepo("https://nexus-ci.delta.sbrf.ru/repository/public/")
+        protectedRepo("https://nexus-ci.delta.sbrf.ru/repository/maven-lib-int/")
     }
 
     apply plugin: "io.spring.dependency-management"
